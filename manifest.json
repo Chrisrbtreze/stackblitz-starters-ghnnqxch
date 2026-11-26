@@ -1,0 +1,11 @@
+{
+  "name": "LENDAS: O Outro Lado",
+  "version": "1.0.0",
+  "manifest_version": 1,
+  "action": {
+    "title": "LENDAS",
+    "popover": "/",
+    "width": 400,
+    "height": 700
+  }
+}

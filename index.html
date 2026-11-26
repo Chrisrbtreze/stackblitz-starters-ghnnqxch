@@ -1,0 +1,757 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LENDAS - Smartphone</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+  <div class="phone">
+    <div class="visor">
+
+      <div class="entalhe"></div>
+
+      <div class="barra-status">
+      <span id="horario-status">14:30</span>
+      <span class="status-acoes">
+      <button type="button" id="btn-config-celular" aria-label="Configurações">
+        •••
+      </button>
+      <span>▰</span>
+    </span>
+    </div>
+
+      <main id="tela">
+
+        <!-- Tela inicial -->
+        <section class="tela home">
+        <div class="topo-home">
+        <div class="relogio" id="horario-celular">14:30</div>
+        <div class="temp" id="localizacao-celular">Belém, Pará</div>
+      </div>
+
+          <div class="configuracoes-mestre">
+          <button type="button" id="abrir-config-mestre">
+            ⚙️ Mestre
+          </button>
+        </div>
+
+          <div class="apps">
+            <button class="app" id="btn-inventario">
+              📦
+              <span>Inventário</span>
+            </button>
+
+            <button class="app" id="btn-instagram">
+            📷
+            <span>Instagram</span>
+          </button>
+
+          <button class="app" id="btn-anotacoes">
+          📝
+          <span>Anotações</span>
+        </button>
+          </div>
+        </section>
+
+        <!-- Painel do Mestre -->
+<section class="tela app-tela" id="tela-mestre" hidden>
+
+<header class="cab">
+  <button type="button" class="voltar" id="voltar-mestre">‹</button>
+  <h2>Painel do Mestre</h2>
+  <span></span>
+</header>
+
+<div class="corpo">
+
+  <h3 class="sec">Configurações do celular</h3>
+
+  <button type="button" id="config-celular">
+  ⚙️ Configurar celular
+</button>
+
+  <h3 class="sec">Gerenciar NPCs</h3>
+
+  <button type="button" id="gerenciar-npcs">
+    Perfis e publicações
+  </button>
+
+
+</div>
+
+</section>
+
+<section class="tela app-tela" id="tela-gerenciar-npcs" hidden>
+
+<header class="cab">
+  <button type="button" class="voltar" id="voltar-gerenciar-npcs">
+    ‹
+  </button>
+
+  <h2>Perfis de NPCs</h2>
+  <span></span>
+</header>
+
+  <button type="button" id="criar-npc">
+    + Criar perfil de NPC
+  </button>
+
+  <div id="lista-npcs"></div>
+</section>
+
+       <!-- Tela do inventário -->
+<section class="tela app-tela" id="tela-inventario" hidden>
+
+<header class="cab">
+  <button class="voltar" id="voltar-home">‹</button>
+  <h2>Inventário</h2>
+  <button type="button" id="abrir-pericias" class="botao-seta">
+    Perícias ➜
+  </button>
+</header>
+
+<div class="corpo">
+            
+<div class="perfil-personagem">
+
+<div class="retrato">
+  <img id="foto-personagem" src="assets/personagem.png"
+       alt="Foto do personagem"
+       onerror="this.style.display='none'">
+</div>
+
+<h2 id="nome-personagem">Claus Albuquerque</h2>
+
+<button type="button" id="editar-personagem">
+  Editar personagem
+</button>
+
+<div class="info-personagem">
+  <p><strong>Idade:</strong> <span id="idade-personagem">Não informada</span></p>
+  <p><strong>Ocupação:</strong> <span id="ocupacao-personagem">Não informada</span></p>
+  <p id="descricao-personagem">Nenhuma descrição adicionada.</p>
+</div>
+
+</div>
+
+
+            
+<h3 class="sec">Vida</h3>
+<div class="barra vida">
+  <div class="trilho">
+    <i id="barra-vida" style="width:100%"></i>
+    <span id="texto-vida">20 / 20</span>
+  </div>
+</div>
+
+<div class="controles-status">
+  <button type="button" id="vida-menos">−</button>
+  <button type="button" id="vida-mais">+</button>
+</div>
+
+
+           
+<h3 class="sec">Sanidade</h3>
+<div class="barra sanidade">
+  <div class="trilho">
+    <i id="barra-sanidade" style="width:100%"></i>
+    <span id="texto-sanidade">15 / 15</span>
+  </div>
+</div>
+
+<div class="controles-status">
+  <button type="button" id="sanidade-menos">−</button>
+  <button type="button" id="sanidade-mais">+</button>
+</div>
+
+
+            <h3 class="sec">Inventário</h3>
+
+            <div class="grade">
+              <button class="slot vazio" data-slot="1">+</button>
+              <button class="slot vazio" data-slot="2">+</button>
+              <button class="slot vazio" data-slot="3">+</button>
+              <button class="slot vazio" data-slot="4">+</button>
+              <button class="slot vazio" data-slot="5">+</button>
+              <button class="slot vazio" data-slot="6">+</button>
+            </div>
+
+          </div>
+        </section>
+
+<!-- Tela de perícias -->
+<section class="tela app-tela" id="tela-pericias" hidden>
+
+<header class="cab">
+  <button type="button" class="voltar" id="voltar-personagem">
+    ‹
+  </button>
+
+  <h2>Perícias</h2>
+</header>
+
+<div class="corpo">
+
+
+<div class="nivel-personagem">
+<label for="nivel-personagem">Nível:</label>
+<input type="number" id="nivel-personagem"
+       min="1" value="1">
+</div>
+
+<div class="lista-pericias">
+
+<div class="cabecalho-pericias">
+  <span>Perícias:</span>
+  <span></span>
+  <span>Bônus:</span>
+</div>
+
+<div class="linha-pericia">
+  <input type="number" min="0" value="0">
+  <span>Investigação</span>
+  <input type="number" min="0" value="0">
+</div>
+
+<div class="linha-pericia">
+  <input type="number" min="0" value="0">
+  <span>Rastreamento</span>
+  <input type="number" min="0" value="0">
+</div>
+
+<div class="linha-pericia">
+  <input type="number" min="0" value="0">
+  <span>Primeiros Socorros</span>
+  <input type="number" min="0" value="0">
+</div>
+
+<div class="linha-pericia">
+  <input type="number" min="0" value="0">
+  <span>Ocultismo</span>
+  <input type="number" min="0" value="0">
+</div>
+
+<div class="linha-pericia">
+  <input type="number" min="0" value="0">
+  <span>Sobrevivência</span>
+  <input type="number" min="0" value="0">
+</div>
+
+<div class="linha-pericia">
+  <input type="number" min="0" value="0">
+  <span>Diplomacia</span>
+  <input type="number" min="0" value="0">
+</div>
+
+<div class="linha-pericia">
+  <input type="number" min="0" value="0">
+  <span>Furtividade</span>
+  <input type="number" min="0" value="0">
+</div>
+
+<div class="linha-pericia">
+  <input type="number" min="0" value="0">
+  <span>Armas Brancas</span>
+  <input type="number" min="0" value="0">
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- Tela de perfil do Instagram -->
+<section class="tela app-tela instagram" id="tela-perfil-instagram" hidden>
+
+<header class="cab instagram-cab">
+  <button type="button" class="voltar" id="voltar-perfil-instagram">‹</button>
+  <h2>Perfil</h2>
+  <span></span>
+</header>
+
+<div class="corpo instagram-corpo">
+
+  <div class="perfil-instagram">
+    <div class="perfil-instagram-topo">
+    <div class="perfil-instagram-foto">
+    <img
+  id="foto-perfil-instagram"
+  src="assets/Foto perfil Lívia.jpg"
+  alt="Foto de Lívia Martins"
+>
+  </div>
+  
+
+      <div class="perfil-instagram-dados">
+      <strong id="usuario-perfil-instagram">livia.martins</strong>
+        <div class="perfil-instagram-numeros">
+          <span><strong>1</strong> publicação</span>
+          <span><strong>0</strong> seguidores</span>
+          <span><strong>0</strong> seguindo</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="perfil-instagram-bio">
+    <strong id="nome-perfil-instagram">Lívia Martins</strong>
+    <p id="bio-perfil-instagram">Fotografia | Natureza | Belém - PA</p>
+    <p id="descricao-perfil-instagram">Registrando lugares e momentos pelo caminho. 🌿</p>
+    </div>
+
+    <div class="perfil-instagram-publicacoes">
+      <h3>Publicações</h3>
+      <img src="assets/floresta-livia.jpg" alt="Publicação de Lívia">
+    </div>
+  </div>
+
+</div>
+</section>
+ 
+
+<!-- Tela do Instagram -->
+<section class="tela app-tela instagram" id="tela-instagram" hidden>
+<header class="cab instagram-cab">
+<button type="button" class="voltar" id="voltar-instagram">‹</button>
+<h2>Instagram</h2>
+<button type="button" id="abrir-perfil-jogador" class="instagram-icone">☻</button>
+</header>
+
+<div class="corpo instagram-corpo">
+
+  <!-- Barra de stories -->
+  <div class="stories">
+    <div class="story">
+      <div class="story-foto">+</div>
+      <span>Seu story</span>
+    </div>
+
+    <div class="story">
+    <div class="story-foto">
+    <img src="assets/Foto perfil Lívia.jpg" alt="Lívia">
+  </div>
+
+      <span>Lívia</span>
+    </div>
+
+    <div class="story">
+      <div class="story-foto">?</div>
+      <span>Explorar</span>
+    </div>
+  </div>
+
+  <!-- Publicações -->
+  <h3 class="instagram-titulo">Feed</h3>
+
+  <article class="publicacao">
+    <div class="publicacao-usuario">
+    <div class="usuario-foto">
+    <img src="assets/Foto perfil Lívia.jpg" alt="Lívia">
+  </div>
+      <div>
+      <button type="button" id="abrir-perfil-livia" class="nome-usuario">
+      livia.martins
+    </button>
+        <small>Belém, Pará</small>
+      </div>
+      <span class="publicacao-menu">•••</span>
+    </div>
+
+    <div class="publicacao-imagem">
+    <img src="assets/floresta-livia.jpg" alt="Floresta fotografada por Lívia">
+  </div>
+
+  <div class="publicacao-acoes">
+    <button type="button" class="botao-curtir" id="curtir-publicacao">♡</button>
+    <span>○</span>
+    <span>⌑</span>
+  </div>
+
+    <div class="publicacao-legenda">
+      <strong>livia.martins</strong>
+      Mais uma caminhada pela floresta. É triste ver como algumas áreas estão ficando...
+    </div>
+
+    
+<div class="area-comentarios">
+
+<div class="lista-comentarios" id="lista-comentarios">
+  <p class="publicacao-comentarios">Nenhum comentário ainda.</p>
+</div>
+
+<form class="form-comentario" id="form-comentario">
+  <input
+    type="text"
+    id="campo-comentario"
+    placeholder="Adicione um comentário..."
+    maxlength="300"
+    required
+  >
+  <button type="submit">Publicar</button>
+</form>
+
+</div>
+
+    <small class="publicacao-data">HÁ 2 DIAS</small>
+  </article>
+
+</div>
+</section>
+
+<!-- Tela de Anotações -->
+<section class="tela app-tela" id="tela-anotacoes" hidden>
+
+<header class="cab">
+  <button type="button" class="voltar" id="voltar-anotacoes">‹</button>
+  <h2>Anotações</h2>
+  <button type="button" id="nova-anotacao">+</button>
+</header>
+
+<div class="corpo">
+  <div class="lista-anotacoes" id="lista-anotacoes">
+
+    <div class="anotacoes-vazio">
+      <span>📝</span>
+      <p>Nenhuma anotação ainda.</p>
+      <small>Registre aqui suas descobertas e teorias.</small>
+    </div>
+
+  </div>
+</div>
+
+</section>
+
+<!-- Tela de perfil do jogador -->
+<section class="tela app-tela instagram" id="tela-perfil-jogador" hidden>
+
+<header class="cab instagram-cab">
+  <button type="button" class="voltar" id="voltar-perfil-jogador">‹</button>
+  <h2>Meu perfil</h2>
+  <span></span>
+</header>
+
+<div class="corpo instagram-corpo">
+
+  <div class="perfil-instagram">
+
+    <div class="perfil-instagram-topo">
+      <div class="perfil-instagram-foto">
+        <img id="foto-perfil-jogador" src="" alt="Foto do personagem" style="display: none;">
+        <span id="foto-perfil-jogador-vazia">?</span>
+      </div>
+
+      <div class="perfil-instagram-dados">
+      <strong id="usuario-perfil-jogador">meu.usuario</strong>
+      <div class="perfil-instagram-numeros">
+        <span>Perfil de jogador</span>
+      </div>
+    </div>
+
+    <div class="perfil-instagram-bio">
+    <strong id="bio-nome-jogador">Seu personagem</strong>
+    <p>Idade: <span id="bio-idade-jogador">Não informada</span></p>
+    <p>Ocupação: <span id="bio-ocupacao-jogador">Não informada</span></p>
+    <p id="bio-descricao-jogador">Nenhuma descrição adicionada.</p>
+    <p id="bio-personalizada-jogador"></p>
+  
+    <button type="button" id="editar-perfil-instagram">
+      Editar perfil
+    </button>
+  </div>
+
+  </div>
+
+</div>
+</section>
+
+<!-- Janela de detalhes do item -->
+
+<dialog id="modal-item">
+<div class="dlg-corpo">
+
+  <h3 id="item-nome">Nome do item</h3>
+
+  <p id="item-descricao">
+    Descrição do item aparecerá aqui.
+  </p>
+
+  <label>
+    Quantidade:
+    <span id="item-quantidade">1</span>
+  </label>
+
+  <div class="dlg-acoes">
+    <button type="button" id="excluir-item" class="perigo">
+      Excluir
+    </button>
+
+    <button type="button" id="editar-item">
+      Editar
+    </button>
+
+    <button type="button" id="fechar-modal" class="principal">
+      Fechar
+    </button>
+  </div>
+
+</div>
+</dialog>
+
+<dialog id="modal-personagem">
+<div class="dlg-corpo">
+
+  <h3>Editar personagem</h3>
+
+  <label>
+    Nome:
+    <input type="text" id="campo-personagem-nome"
+           placeholder="Nome do personagem">
+  </label>
+
+  <label>
+    Idade:
+    <input type="number" id="campo-personagem-idade"
+           min="1" placeholder="Idade">
+  </label>
+
+  <label>
+    Ocupação:
+    <input type="text" id="campo-personagem-ocupacao"
+           placeholder="Ex: Investigador">
+  </label>
+
+  <label>
+    Descrição:
+    <textarea id="campo-personagem-descricao"
+              rows="3"
+              placeholder="Conte um pouco sobre o personagem..."></textarea>
+  </label>
+
+  <label>
+    Foto do personagem:
+    <input type="file" id="campo-personagem-foto"
+           accept="image/*">
+  </label>
+
+  <div class="dlg-acoes">
+    <button type="button" id="fechar-personagem">
+      Cancelar
+    </button>
+
+    <button type="button" id="salvar-personagem"
+            class="principal">
+      Salvar
+    </button>
+  </div>
+
+</div>
+</dialog>
+
+<dialog id="modal-perfil-instagram">
+<div class="dlg-corpo">
+
+  <h3>Editar perfil do Instagram</h3>
+
+  <label>
+    Nome de usuário:
+    <input type="text" id="campo-usuario-instagram"
+           placeholder="Ex: claus.albuquerque">
+  </label>
+
+  <label>
+    Biografia:
+    <textarea id="campo-bio-instagram"
+              rows="3"
+              maxlength="150"
+              placeholder="Escreva sua biografia..."></textarea>
+  </label>
+
+  <div class="dlg-acoes">
+    <button type="button" id="fechar-perfil-instagram">
+      Cancelar
+    </button>
+
+    <button type="button" id="salvar-perfil-instagram"
+            class="principal">
+      Salvar
+    </button>
+  </div>
+
+</div>
+</dialog>
+
+<!-- Janela de nova anotação -->
+<dialog id="modal-anotacao">
+<div class="dlg-corpo">
+
+  <h3>Nova anotação</h3>
+
+  <label>
+    Título:
+    <input
+      type="text"
+      id="campo-titulo-anotacao"
+      placeholder="Ex: Raízes negras em Belém"
+      maxlength="60"
+    >
+  </label>
+
+  <label>
+    Anotação:
+    <textarea
+      id="campo-texto-anotacao"
+      rows="6"
+      maxlength="3000"
+      placeholder="Escreva suas descobertas, pistas e teorias..."
+    ></textarea>
+  </label>
+
+  <div class="dlg-acoes">
+    <button type="button" id="fechar-anotacao">
+      Cancelar
+    </button>
+
+    <button type="button" id="salvar-anotacao" class="principal">
+      Salvar
+    </button>
+  </div>
+
+</div>
+</dialog>
+
+<!-- Janela de visualização da anotação -->
+<dialog id="modal-visualizar-anotacao">
+<div class="dlg-corpo">
+
+  <h3 id="visualizar-titulo-anotacao">Título da anotação</h3>
+
+  <p id="visualizar-texto-anotacao">
+    Texto da anotação.
+  </p>
+
+  <div class="dlg-acoes">
+  <button type="button" id="excluir-anotacao">
+    Excluir
+  </button>
+
+  <button type="button" id="editar-anotacao">
+    Editar
+  </button>
+
+  <button type="button" id="fechar-visualizar-anotacao">
+    Fechar
+  </button>
+</div>
+
+</div>
+</dialog>
+
+<!-- Janela de configurações do celular -->
+<dialog id="modal-config-celular">
+<div class="dlg-corpo">
+
+  <h3>Configurar celular</h3>
+
+  <label>
+    Horário:
+    <input
+      type="time"
+      id="campo-horario"
+      value="14:30"
+    >
+  </label>
+
+  <label>
+    Cidade e estado:
+    <input
+      type="text"
+      id="campo-localizacao"
+      placeholder="Ex: Belém, Pará"
+    >
+  </label>
+
+  <div class="dlg-acoes">
+    <button type="button" id="fechar-config-celular">
+      Cancelar
+    </button>
+
+    <button type="button" id="salvar-config-celular" class="principal">
+      Salvar
+    </button>
+  </div>
+
+</div>
+</dialog>
+
+<!-- Janela de criação de NPC -->
+<dialog id="modal-criar-npc">
+  <div class="dlg-corpo">
+
+    <h3>Criar perfil de NPC</h3>
+
+    <label>
+      Nome:
+      <input type="text" id="npc-nome" placeholder="Nome do NPC">
+    </label>
+
+    <label>
+      Nome de usuário:
+      <input type="text" id="npc-usuario" placeholder="Ex: joao.silva">
+    </label>
+
+    <label>
+      Biografia:
+      <textarea id="npc-bio" rows="3" placeholder="Biografia do NPC"></textarea>
+    </label>
+
+    <label>
+      Foto do NPC:
+      <input
+        type="file"
+        id="npc-foto"
+        accept="image/*"
+      >
+    </label>
+
+    <div class="dlg-acoes">
+      <button type="button" id="cancelar-criar-npc">
+        Cancelar
+      </button>
+
+      <button type="button" id="salvar-npc" class="principal">
+        Salvar
+      </button>
+    </div>
+
+  </div>
+</dialog>
+
+</main>
+</div>
+</div>
+
+<script src="./script.js"></script>
+
+<dialog id="modal-config-visual">
+<h3>Personalizar celular</h3>
+
+<label for="cor-wallpaper">Cor do wallpaper:</label>
+<input type="color" id="cor-wallpaper" value="#0c130f">
+
+<button type="button" id="salvar-wallpaper">
+  Salvar
+</button>
+
+<button type="button" id="fechar-config-visual">
+  Fechar
+</button>
+</dialog>
+
+</body>
+</html>
+
