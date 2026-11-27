@@ -4,6 +4,7 @@
   "manifest_version": 1,
   "action": {
     "title": "LENDAS",
+    "icon": "/icon.svg",
     "popover": "/",
     "width": 400,
     "height": 700
